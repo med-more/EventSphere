@@ -13,6 +13,9 @@ const Navbar = () => {
     [items],
   )
 
+    const isAdmin = Boolean(localStorage.getItem('es_admin_token'))
+
+
   return (
     <div>Navbar</div>
   )
