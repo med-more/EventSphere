@@ -15,7 +15,13 @@ const Navbar = () => {
 
     const isAdmin = Boolean(localStorage.getItem('es_admin_token'))
 
-    
+    const handleLogout = () => {
+    localStorage.removeItem('es_admin_token')
+    if (location.pathname.startsWith('/admin')) {
+      navigate('/login')
+    }
+    setOpen(false)
+  }
 
   return (
     <div>Navbar</div>
