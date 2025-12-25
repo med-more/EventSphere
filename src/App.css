@@ -1,0 +1,19 @@
+ .glow-ring {
+  position: absolute;
+  inset: -20%;
+  background: radial-gradient(circle, rgba(66, 199, 255, 0.1), transparent 55%),
+    radial-gradient(circle at 80% 20%, rgba(111, 243, 200, 0.1), transparent 40%);
+  filter: blur(40px);
+  z-index: 0;
+}
+
+.hero-bg {
+  background-image: url('https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=1600&q=80');
+  background-size: cover;
+  background-position: center;
+}
+
+.section-gradient {
+  background: linear-gradient(180deg, rgba(66, 199, 255, 0.05), rgba(111, 243, 200, 0.05));
+}
+
