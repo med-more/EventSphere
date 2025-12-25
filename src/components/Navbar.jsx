@@ -8,6 +8,10 @@ const Navbar = () => {
   const navigate = useNavigate()
   const [open, setOpen] = useState(false)
 
+  const cartCount = useMemo(
+    () => items.reduce((acc, item) => acc + item.quantity, 0),
+    [items],
+  )
 
   return (
     <div>Navbar</div>
