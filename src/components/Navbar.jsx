@@ -23,6 +23,15 @@ const Navbar = () => {
     };
   }, []);
 
+  const handleLogout = () =>{
+    localStorage.removeItem('adminAuth');
+    setIsAdminLoggedIn(false);
+    window.dispatchEvent(new Event('authChange'));
+    toast.success('Déconnexion réussie');
+    navigate('/');
+    setMobileMenuOpen(false);
+  };
+
   return (
     <div></div>
   )
