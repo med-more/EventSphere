@@ -4,6 +4,16 @@ import { createEvent } from '../../api/axios';
 import { uploadImage } from '../../api/cloudinary';
 
 const AdminAddEvent = () => {
+  const navigate = useNavigate();
+  const [uploading, setUploading] = useState(false);
+  const [formData, setFormData] = useState({
+        name: '',
+        description: '',
+        category: 'Musique',
+        image: '',
+        price: '',
+        date: '',
+  });
   return (
     <div>AdminAddEvent</div>
   )
