@@ -10,6 +10,19 @@ const Navbar = () => {
   const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
   const navigate = useNavigate();
 
+  useEffect(() =>{
+    const checkAuth = () =>{
+      setIsAdminLoggedIn(localStorage.getItem('adminAuth') === 'true');
+    };
+    checkAuth();
+    window.addEventListener('storage', checkAuth);
+    window.addEventListener('authChange', checkAuth);
+    return() =>{
+      window.removeEventListener('storage', checkAuth);
+      window.removeEventListener('authChange', checkAuth);
+    };
+  }, []);
+
   return (
     <div></div>
   )
