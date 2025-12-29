@@ -37,6 +37,23 @@ const AdminAddEvent = () => {
       setUploading(false);
     }
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const eventData = {
+        ...formData,
+        price: parseFloat(formData.price),
+      };
+
+      await createEvent(eventData);
+      navigate('/admin/events');
+    } catch (error) {
+      console.error('Error creating event:', error);
+      toast.error('Erreur lors de la création');
+    }
+  };
   return (
     <div>AdminAddEvent</div>
   )
