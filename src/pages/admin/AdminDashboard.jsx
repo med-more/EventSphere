@@ -33,6 +33,12 @@ const AdminDashboard = () => {
     };
     fetchStats();
   }, []);
+
+  const handleLogout = () => {
+        localStorage.removeItem('adminAuth');
+        window.dispatchEvent(new Event('authChange'));
+        navigate('/admin/login');
+  };
   return (
     <div>AdminDashboard</div>
   )
