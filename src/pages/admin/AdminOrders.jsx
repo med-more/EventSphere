@@ -10,6 +10,15 @@ const AdminOrders = () => {
   useEffect(() => {
         fetchOrders();
     }, []);
+
+    const fetchOrders = async () => {
+        try {
+            const response = await getOrders();
+            setOrders(response.data);
+        } catch (error) {
+            console.error('Error fetching orders:', error);
+        }
+    };
   return (
     <div>AdminOrders</div>
   )
