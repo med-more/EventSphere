@@ -52,6 +52,30 @@ const AdminProducts = () => {
         setUploading(false);
       }
     };
+
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+
+      try {
+        const eventData= {
+          ...formData,
+          price: parseFloat(formData.price),
+        };
+
+        if (editingEvent) {
+          await updateEvent(editingEvent.id, eventData);
+        } else{
+          await createEvent(eventData);
+        }
+
+
+        fetchEvents();
+        resetForm();
+      } catch (error) {
+        console.error('Error saving event:', error);
+        toast.error('Erreur lors de la sauvegarde');
+      }
+    };
   return (
     <div>AdminProducts</div>
   )
