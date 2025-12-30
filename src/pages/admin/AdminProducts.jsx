@@ -16,6 +16,10 @@ const AdminProducts = () => {
         price: '',
         date: '',
     });
+
+    useEffect(() =>  {
+      fetchEvents();
+    }, []);
   return (
     <div>AdminProducts</div>
   )
