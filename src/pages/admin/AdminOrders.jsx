@@ -6,6 +6,10 @@ import { getOrders } from '../../api/axios';
 const AdminOrders = () => {
   const [ orders, setOrders ] = useState([]);
   const [ expandedOrder, setExpandedOrder ] = useState(null);
+
+  useEffect(() => {
+        fetchOrders();
+    }, []);
   return (
     <div>AdminOrders</div>
   )
