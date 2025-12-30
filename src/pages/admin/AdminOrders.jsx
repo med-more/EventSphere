@@ -19,6 +19,10 @@ const AdminOrders = () => {
             console.error('Error fetching orders:', error);
         }
     };
+
+    const toggleExpand (orderId) =>{
+      setExpandedOrder(expandedOrder === orderId ? null : orderId);
+    };
   return (
     <div>AdminOrders</div>
   )
