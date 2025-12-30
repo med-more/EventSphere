@@ -29,6 +29,13 @@ const AdminProducts = () => {
         console.error('Error fetching events:', error);
       }
     };
+
+    const handleChange = (e) => {
+      setFormData({
+        ...FormData,
+        [e.target.name]: e.target.value,
+      });
+    };
   return (
     <div>AdminProducts</div>
   )
