@@ -76,6 +76,19 @@ const AdminProducts = () => {
         toast.error('Erreur lors de la sauvegarde');
       }
     };
+
+    const handleEdit = async (event) =>{
+      setEditingEvent(event);
+      setFormData({
+            name: event.name,
+            description: event.description,
+            category: event.category,
+            image: event.image,
+            price: event.price.toString(),
+            date: event.date,
+      });
+      setShowModal(true);
+    };
   return (
     <div>AdminProducts</div>
   )
