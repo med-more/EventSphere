@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getEvents, createEvent, updateEvent, deleteEvent } from '../../api/axios';
 import { uploadImage } from '../../api/cloudinary';
+import toast from 'react-hot-toast';
 
 const AdminProducts = () => {
   const [events, setEvents] = useState([]);
@@ -35,6 +36,21 @@ const AdminProducts = () => {
         ...FormData,
         [e.target.name]: e.target.value,
       });
+    };
+
+    const handleImageUpload = async (e) =>{
+      const file = e.target.files[0];
+      if(!file) return;
+
+      setUploading(true);
+      try {
+        const imageUrl = await uploadImage(file);
+        setFormData(prev => ({ ...prev, image: imageUrl }));
+      } catch (error) {
+        toast.error("Erreur lors de l'upload de l'image");
+      } finally{
+        setUploading(false);
+      }
     };
   return (
     <div>AdminProducts</div>
