@@ -100,6 +100,19 @@ const AdminProducts = () => {
             }
         }
     };
+
+    const resetForm = () => {
+      setFormData({
+            name: '',
+            description: '',
+            category: 'Musique',
+            image: '',
+            price: '',
+            date: '',
+      });
+      setEditingEvent(null);
+      setShowModal(false);
+    };
   return (
     <div>AdminProducts</div>
   )
