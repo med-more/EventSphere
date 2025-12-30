@@ -11,6 +11,28 @@ const AdminDashboard = () => {
   });
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        const [ eventsRes, ordersRes ] = await Promise.all([
+          getEvents(),
+          getOrders()
+        ]);
+
+        const totalRevenue = ordersRes.data.reduce((sum, order) => sum + order.totalPrice, 0);
+
+        setStats({
+              totalEvents: eventsRes.data.length,
+              totalOrders: ordersRes.data.length,
+              totalRevenue: totalRevenue,
+        });
+      } catch (error) {
+        console.error('Error fetching stats:', error);
+      }
+    };
+    fetchStats();
+  }, []);
   return (
     <div>AdminDashboard</div>
   )
