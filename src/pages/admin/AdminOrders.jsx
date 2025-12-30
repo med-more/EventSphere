@@ -20,7 +20,7 @@ const AdminOrders = () => {
         }
     };
 
-    const toggleExpand (orderId) =>{
+    const toggleExpand = (orderId) =>{
       setExpandedOrder(expandedOrder === orderId ? null : orderId);
     };
   return (
