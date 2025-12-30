@@ -4,6 +4,8 @@ import { getOrders } from '../../api/axios';
 
 
 const AdminOrders = () => {
+  const [ orders, setOrders ] = useState([]);
+  const [ expandedOrder, setExpandedOrder ] = useState(null);
   return (
     <div>AdminOrders</div>
   )
