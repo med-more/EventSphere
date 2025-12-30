@@ -20,6 +20,15 @@ const AdminProducts = () => {
     useEffect(() =>  {
       fetchEvents();
     }, []);
+
+    const fetchEvents = async () => {
+      try {
+        const response = await getEvents();
+        setEvents(response.data);
+      } catch (error) {
+        console.error('Error fetching events:', error);
+      }
+    };
   return (
     <div>AdminProducts</div>
   )
