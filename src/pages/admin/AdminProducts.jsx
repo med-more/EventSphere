@@ -89,6 +89,17 @@ const AdminProducts = () => {
       });
       setShowModal(true);
     };
+
+    const handleDelete = async (id) => {
+      if (window.confirm('Êtes-vous sûr de vouloir supprimer cet événement ?')) {
+            try {
+                await deleteEvent(id);
+                fetchEvents();
+            } catch (error) {
+                console.error('Error deleting event:', error);
+            }
+        }
+    };
   return (
     <div>AdminProducts</div>
   )
