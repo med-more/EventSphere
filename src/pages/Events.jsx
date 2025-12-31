@@ -70,6 +70,14 @@ const Events = () => {
             },
         });
     };
+
+    if (loading) {
+        return (
+            <div className="min-h-screen flex items-center justify-center">
+                <div className="text-xl text-bright-orange animate-pulse font-medium">Chargement...</div>
+            </div>
+        );
+    }
   return (
     <div>Events</div>
   )
