@@ -54,6 +54,10 @@ const Events = () => {
 
       setFilteredEvents(result);
     }, [events, selectedCategory, searchQuery, searchParams]);
+
+    const handleCategoryChange = (category) =>{
+      setSelectedCategory(category);
+    };
   return (
     <div>Events</div>
   )
