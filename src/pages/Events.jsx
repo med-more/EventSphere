@@ -58,6 +58,18 @@ const Events = () => {
     const handleCategoryChange = (category) =>{
       setSelectedCategory(category);
     };
+
+    const handleAddToCart = (event) => {
+      dispatch(addToCart(event));
+      toast.success(`${event.name} ajouté au panier!`, {
+            icon: '🎫',
+            style: {
+                borderRadius: '10px',
+                background: '#1e293b',
+                color: '#fff',
+            },
+        });
+    };
   return (
     <div>Events</div>
   )
