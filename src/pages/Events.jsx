@@ -30,6 +30,30 @@ const Events = () => {
         }
       }
     }, []);
+
+    useEffect(()=> {
+      let result = events;
+
+      const categoryParam = searchParams.get('category');
+      const activeCategory = categoryParam || selectedCategory; 
+
+      if (categoryParam && categoryParam !== selectedCategory) {
+        setSelectedCategory(categoryParam);
+      }
+
+      if (activeCategory !== 'All') {
+        result = result.filter(event => event.category === activeCategory);
+      }
+
+      if (searchQuery.trim()) {
+        const query = searchQuery.toLowerCase();
+        result = result.filter(event =>
+          event.name.toLowerCase().includes(query)
+        );
+      }
+
+      setFilteredEvents(result);
+    }, [events, selectedCategory, searchQuery, searchParams]);
   return (
     <div>Events</div>
   )
