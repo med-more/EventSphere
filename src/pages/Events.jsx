@@ -16,6 +16,20 @@ const Events = () => {
   const [searchParams] = useSearchParams();
 
     const categories = ['All', 'Musique', 'Art', 'Spectacle', 'Football'];
+
+    useEffect(() => {
+      const fetchEvents = async () => {
+        try {
+          const response = await getEvents();
+          setEvents(response.data);
+        } catch (error) {
+          console.error('Error fetching events:', error);
+          toast.error('Erreur lors du chargement des événements');
+        }finally{
+          setLoading(false);
+        }
+      }
+    }, []);
   return (
     <div>Events</div>
   )
