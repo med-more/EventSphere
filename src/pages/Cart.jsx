@@ -35,7 +35,98 @@ const Cart = () => {
     } 
   
   return (
-    <div>Cart</div>
+    <div className="min-h-screen max-w-6xl mx-auto px-4 py-8">
+            <h1 className="text-3xl font-bold text-light-beige mb-8 text-center">
+                Votre <span className="text-bright-orange">Panier</span>
+            </h1>
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+                <div className="lg:col-span-2 space-y-3">
+                    {cartItems.map((item) => (
+                        <div key={item.event.id} className="card p-3 flex gap-4 bg-dark-grey border-dark-grey/50">
+                            <img
+                                src={item.event.image}
+                                alt={item.event.name}
+                                className="w-24 h-24 object-cover rounded-md flex-shrink-0"
+                            />
+
+                            <div className="flex-1 min-w-0 flex flex-col justify-between">
+                                <div className="flex justify-between items-start">
+                                    <div>
+                                        <h3 className="text-base font-bold text-light-beige truncate pr-2">{item.event.name}</h3>
+                                        <p className="text-bright-orange/80 text-xs">{item.event.category}</p>
+                                    </div>
+                                    <button
+                                        onClick={() => handleRemove(item.event.id)}
+                                        className="text-light-beige/50 hover:text-red-500 transition-colors p-1"
+                                        title="Supprimer"
+                                    >
+                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                <div className="flex items-center justify-between mt-2">
+                                    <div className="flex items-center space-x-3 bg-dark-black rounded px-2 py-1">
+                                        <button
+                                            onClick={() => handleQuantityChange(item.event.id, item.quantity - 1)}
+                                            disabled={item.quantity <= 1}
+                                            className={`w-5 h-5 flex items-center justify-center font-bold transition-colors ${item.quantity <= 1
+                                                ? 'text-light-beige/30 cursor-not-allowed'
+                                                : 'text-light-beige/70 hover:text-light-beige'
+                                                }`}
+                                        >
+                                            -
+                                        </button>
+                                        <span className="text-light-beige text-sm font-semibold w-4 text-center">{item.quantity}</span>
+                                        <button
+                                            onClick={() => handleQuantityChange(item.event.id, item.quantity + 1)}
+                                            className="text-light-beige/70 hover:text-light-beige transition-colors w-5 h-5 flex items-center justify-center font-bold"
+                                        >
+                                            +
+                                        </button>
+                                    </div>
+
+                                    <div className="text-lg font-bold text-bright-orange">
+                                        {item.event.price * item.quantity} DH
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+
+
+                <div className="lg:col-span-1">
+                    <div className="card sticky top-24 bg-dark-grey border-dark-grey/50">
+                        <h2 className="text-lg font-bold text-light-beige mb-4">Résumé</h2>
+
+                        <div className="space-y-2 mb-4 text-sm">
+                            {cartItems.map((item) => (
+                                <div key={item.event.id} className="flex justify-between text-light-beige/70">
+                                    <span className="truncate pr-4 flex-1">{item.event.name} <span className="text-light-beige/50">x{item.quantity}</span></span>
+                                    <span className="whitespace-nowrap">{item.event.price * item.quantity} DH</span>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="border-t border-dark-grey pt-3 mb-4">
+                            <div className="flex justify-between items-center">
+                                <span className="text-base font-bold text-light-beige">Total</span>
+                                <span className="text-xl font-bold text-bright-orange">{(total || 0).toFixed(2)} DH</span>
+                            </div>
+                        </div>
+
+                        <Link to="/checkout" className="btn-primary w-full text-center block">
+                            Procéder au paiement
+                        </Link>
+                    </div>
+                </div>
+            </div>
+        </div>
   )
 }
 
