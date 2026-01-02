@@ -4,6 +4,14 @@ import { selectCartItems, selectCartTotal, removeFromCart, updateQuantity } from
 
 
 const Cart = () => {
+  const cartItems = useSelector(selectCartItems);
+  const total = useSelector(selectCartTotal);
+  const dispatch = useDispatch();
+
+  console.log('cart Items', cartItems);
+  console.log('Cart total', total);
+  
+  
   return (
     <div>Cart</div>
   )
