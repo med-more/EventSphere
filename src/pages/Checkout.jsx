@@ -100,6 +100,25 @@ const Checkout = () => {
     navigate('/cart');
     return null;
   }
+
+  if (showSuccess) {
+        return (
+            <div className="min-h-screen flex items-center justify-center">
+                <div className="card max-w-md text-center animate-fade-in p-8 bg-dark-grey">
+                    <div className="mb-6 inline-flex items-center justify-center w-20 h-20 rounded-full bg-bright-orange/20">
+                        <svg className="w-10 h-10 text-bright-orange checkmark-animation" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                    </div>
+                    <h2 className="text-2xl font-bold text-light-beige mb-2">Commande confirmée!</h2>
+                    <p className="text-light-beige/70 mb-6 text-sm">
+                        Merci pour votre achat. Un email de confirmation a été envoyé à <span className="text-bright-orange">{formData.email}</span>
+                    </p>
+                    <p className="text-xs text-light-beige/50">Redirection automatique...</p>
+                </div>
+            </div>
+        );
+    }
   return (
     <div>Checkout</div>
   )
