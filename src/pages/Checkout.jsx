@@ -7,6 +7,10 @@ import toast from 'react-hot-toast';
 
 
 const Checkout = () => {
+  const cartItems = useSelector(selectCartItems);
+  const total = useSelector(selectCartTotal);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   return (
     <div>Checkout</div>
   )
