@@ -120,7 +120,100 @@ const Checkout = () => {
         );
     }
   return (
-    <div>Checkout</div>
+    <div className="min-h-screen max-w-6xl mx-auto px-4 py-12">
+            <h1 className="text-3xl font-bold text-light-beige mb-8 text-center">
+                <span className="text-bright-orange">Finaliser</span> votre commande
+            </h1>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+                <div className="card h-fit bg-dark-grey">
+                    <h2 className="text-xl font-bold text-light-beige mb-6">Informations de contact</h2>
+
+                    <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+                        <div>
+                            <label className="block text-light-beige/70 mb-1.5 text-xs font-medium uppercase tracking-wider">Nom complet</label>
+                            <input
+                                type="text"
+                                name="fullName"
+                                value={formData.fullName}
+                                onChange={handleChange}
+                                className="input-field"
+                                placeholder="Jean Dupont"
+                            />
+                        </div>
+
+                        <div>
+                            <label className="block text-light-beige/70 mb-1.5 text-xs font-medium uppercase tracking-wider">Email</label>
+                            <input
+                                type="email"
+                                name="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                className="input-field"
+                                placeholder="jean.dupont@example.com"
+                            />
+                        </div>
+
+                        <div>
+                            <label className="block text-light-beige/70 mb-1.5 text-xs font-medium uppercase tracking-wider">Téléphone</label>
+                            <input
+                                type="tel"
+                                name="phone"
+                                value={formData.phone}
+                                onChange={handleChange}
+                                className="input-field"
+                                placeholder="+33 6 12 34 56 78"
+                            />
+                        </div>
+
+                        <button
+                            type="submit"
+                            disabled={loading}
+                            className="btn-primary w-full mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                            {loading ? 'Traitement...' : 'Confirmer la commande'}
+                        </button>
+                    </form>
+                </div>
+
+
+                <div className="card h-fit bg-dark-grey">
+                    <h2 className="text-xl font-bold text-light-beige mb-6">Récapitulatif</h2>
+
+                    <div className="space-y-3 mb-6 max-h-[300px] overflow-y-auto pr-2">
+                        {cartItems.map((item) => (
+                            <div key={item.event.id} className="flex justify-between items-start pb-3 border-b border-dark-grey last:border-0">
+                                <div className="flex-1">
+                                    <h3 className="text-light-beige font-medium text-sm">{item.event.name}</h3>
+                                    <p className="text-light-beige/50 text-xs mt-0.5">Quantité: {item.quantity}</p>
+                                </div>
+                                <div className="text-bright-orange font-bold text-sm">
+                                    {item.event.price * item.quantity} DH
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="bg-dark-black rounded-lg p-4 border border-dark-grey">
+                        <div className="flex justify-between items-center mb-2 text-sm">
+                            <span className="text-light-beige/70">Sous-total</span>
+                            <span className="text-light-beige">{total.toFixed(2)} DH</span>
+                        </div>
+                        <div className="flex justify-between items-center mb-3 text-sm">
+                            <span className="text-light-beige/70">Frais de service</span>
+                            <span className="text-light-beige">0.00 DH</span>
+                        </div>
+                        <div className="border-t border-dark-grey pt-3">
+                            <div className="flex justify-between items-center">
+                                <span className="text-lg font-bold text-light-beige">Total</span>
+                                <span className="text-2xl font-bold text-bright-orange">{total.toFixed(2)} DH</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
   )
 }
 
