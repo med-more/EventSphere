@@ -18,3 +18,4 @@ export const updateEvent = (id, eventData) => api.put(`/events/${id}`, eventData
 export const deleteEvent = (id) => api.delete(`/events/${id}`);
 
 export const getOrders = () => api.get('/orders');
+export const createOrder = (orderData) => api.post('/orders', orderData);
