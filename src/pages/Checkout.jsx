@@ -94,6 +94,11 @@ const Checkout = () => {
         } finally{
           setLoading(false);
         }
+  };
+
+  if (cartItems.length === 0 && !showSuccess) {
+    navigate('/cart');
+    return null;
   }
   return (
     <div>Checkout</div>
