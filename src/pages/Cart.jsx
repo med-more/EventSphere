@@ -10,6 +10,10 @@ const Cart = () => {
 
   console.log('cart Items', cartItems);
   console.log('Cart total', total);
+
+  const handleQuantityChange = (eventId, newQuantity) =>{
+    dispatch(updateQuantity({ eventId, quantity: newQuantity }));
+  };
   
   
   return (
