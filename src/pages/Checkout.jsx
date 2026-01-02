@@ -65,6 +65,29 @@ const Checkout = () => {
                 orderDate: new Date().toISOString(),
             };
             await createOrder(orderData);
+
+            try {
+              const statsRes = await getStats();
+              if (statsRes.data) {
+                const currentStates = statsRes.data;
+                const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
+                await updateStats({
+                  ...currentStates,
+                  totalTicketsSold: currentStates.totalTicketsSold + totalQuantity,
+                  eventsHosted: currentStates.eventsHosted,
+                  happyCustomers: currentStates.happyCustomers + 1
+                });
+              }
+            } catch (statsError) {
+              console.error('Error updating stats:', statsError);
+            }
+            setShowSuccess(true);
+            dispatch(clearCart());
+            toast.success('Commande validée avec succès!');
+            setTimeout(() => {
+              navigate('/');
+            }, 3000);
         } catch (error) {
           console.error('Error creating order:', error);
           toast.error('Une erreur est survenue pendant la commande');
