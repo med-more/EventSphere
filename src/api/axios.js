@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { testimonials, stats, categories, contacts } from '../data/staticData';
+import { data } from 'react-router-dom';
 
 
 const API_URL = 'https://695303b8a319a928023a7d14.mockapi.io'
@@ -19,3 +20,8 @@ export const deleteEvent = (id) => api.delete(`/events/${id}`);
 
 export const getOrders = () => api.get('/orders');
 export const createOrder = (orderData) => api.post('/orders', orderData);
+
+
+
+
+export const getStats = () => Promise.resolve({ data: stats });
