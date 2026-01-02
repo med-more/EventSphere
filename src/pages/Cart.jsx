@@ -15,6 +15,9 @@ const Cart = () => {
     dispatch(updateQuantity({ eventId, quantity: newQuantity }));
   };
   
+  const handleRemove = (eventId) => {
+    dispatch(removeFromCart(eventId));
+  };
   
   return (
     <div>Cart</div>
