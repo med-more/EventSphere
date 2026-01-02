@@ -21,5 +21,18 @@ const cartSlice = createSlice({
             const eventId = action.payload;
             state.items = state.items.filter(item=> item.event.id !== eventId);
         },
-    }
-})
+
+        updateQuantity: (state, action)=> {
+            const { eventId, quantity } = action.payload;
+            const item = state.items.find(item => item.event.id === eventId);
+
+            if (item) {
+                if (quantity <= 0) {
+                    state.items = state.items.filter(item => item.event.id !== eventId);
+                } else {
+                    item.quantity = quantity
+                }
+            }
+        },
+    },
+});
