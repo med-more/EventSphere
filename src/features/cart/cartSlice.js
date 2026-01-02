@@ -34,6 +34,9 @@ const cartSlice = createSlice({
                 }
             }
         },
+        clearCart: (state) => {
+            state.items = [];
+        },
     },
 });
 
@@ -52,3 +55,5 @@ export const selectCartTotal = (state) =>{
     const items = state?.cart?.items || [];
     return items.reduce((total, item) => total + (item.event.price * item.quantity), 0);
 };
+
+export default cartSlice.reducer;
