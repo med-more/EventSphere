@@ -42,3 +42,8 @@ export const { addToCart, removeFromCart, updateQuantity, clearCart } = cartSlic
 
 
 export const selectCartItems = (state) => state?.cart?.items || [];
+
+export const selectCartCount = (state) =>{
+    const items = state?.cart?.items || [];
+    return items.reduce((total, item) => total + item.quantity, 0);
+};
