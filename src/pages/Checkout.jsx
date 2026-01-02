@@ -17,6 +17,16 @@ const Checkout = () => {
         email: '',
         phone: '',
   });
+
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (e) =>{
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
   return (
     <div>Checkout</div>
   )
