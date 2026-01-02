@@ -47,3 +47,8 @@ export const selectCartCount = (state) =>{
     const items = state?.cart?.items || [];
     return items.reduce((total, item) => total + item.quantity, 0);
 };
+
+export const selectCartTotal = (state) =>{
+    const items = state?.cart?.items || [];
+    return items.reduce((total, item) => total + (item.event.price * item.quantity), 0);
+};
