@@ -27,6 +27,51 @@ const Checkout = () => {
       [e.target.name]: e.target.value,
     });
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!formData.fullName.trim()) {
+            toast.error('Le nom complet est requis');
+            return;
+        }
+        if (!formData.email.trim()) {
+            toast.error("L'email est requis");
+            return;
+        }
+        if (!/\S+@\S+\.\S+/.test(formData.email)) {
+            toast.error("L'email n'est pas valide");
+            return;
+        }
+        if (!formData.phone.trim()) {
+            toast.error('Le numéro de téléphone est requis');
+            return;
+        }
+
+        setLoading(true);
+
+        try {
+          const orderData = {
+                customerName: formData.fullName,
+                email: formData.email,
+                phone: formData.phone,
+                items: cartItems.map(item => ({
+                    eventId: item.event.id,
+                    eventName: item.event.name,
+                    quantity: item.quantity,
+                    price: item.event.price,
+                })),
+                totalPrice: total,
+                orderDate: new Date().toISOString(),
+            };
+            await createOrder(orderData);
+        } catch (error) {
+          console.error('Error creating order:', error);
+          toast.error('Une erreur est survenue pendant la commande');
+        } finally{
+          setLoading(false);
+        }
+  }
   return (
     <div>Checkout</div>
   )
