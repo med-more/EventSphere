@@ -16,5 +16,10 @@ const cartSlice = createSlice({
                 state.items.push({ event, quantity: 1 });
             }
         },
+
+        removeFromCart: (state, action) =>{
+            const eventId = action.payload;
+            state.items = state.items.filter(item=> item.event.id !== eventId);
+        },
     }
 })
