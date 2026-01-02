@@ -25,3 +25,7 @@ export const createOrder = (orderData) => api.post('/orders', orderData);
 
 
 export const getStats = () => Promise.resolve({ data: stats });
+export const updateStates = (statsData) => {
+    console.log("Mise à jour stats (simulation):", statsData);
+    return Promise.resolve({ data: { ...stats, ...statsData } });
+};
