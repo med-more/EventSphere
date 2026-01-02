@@ -11,6 +11,12 @@ const Checkout = () => {
   const total = useSelector(selectCartTotal);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const [formData, setFormData] = useState({
+      fullName: '',
+        email: '',
+        phone: '',
+  });
   return (
     <div>Checkout</div>
   )
