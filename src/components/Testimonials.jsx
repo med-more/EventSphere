@@ -20,6 +20,18 @@ const Testimonials = () => {
         };
         fetchTestimonials();
     }, []);
+
+    const handleFeedbackClick = () => {
+        toast('Donnez-nous votre avis si vous le souhaitez !', {
+            icon: '✍️',
+            style: {
+                borderRadius: '10px',
+                background: '#333',
+                color: '#fff',
+            },
+        });
+        navigate('/contact');
+    };
   return (
     <div>Testimonials</div>
   )
