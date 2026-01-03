@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getStats } from '../api/axios';
 
-const StatItem = ({ label ,value, icon }) => {
+const StatItem = ({ label ,value, icon, color }) => {
     const [count, setCount] = useState(0);
 
     useEffect(() =>{
@@ -61,6 +61,43 @@ const StatsCounter = () => {
         const interval = setInterval(fetchStats, 10000);
         return () => clearInterval(interval);
     }, []);
+
+    return (
+        <section className="max-w-7xl mx-auto px-4 pb-16 pt-0 relative z-10">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <StatItem
+                    label="Billets Vendus"
+                    value={stats.totalTicketsSold}
+                    icon={
+                        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z" />
+                        </svg>
+                    }
+                    color="text-blue-500"
+                />
+                <StatItem
+                    label="Clients Heureux"
+                    value={stats.happyCustomers}
+                    icon={
+                        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    }
+                    color="text-green-500"
+                />
+                <StatItem
+                    label="Événements"
+                    value={stats.eventsHosted}
+                    icon={
+                        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                    }
+                    color="text-purple-500"
+                />
+            </div>
+        </section>
+    );
 }
 
 export default StatsCounter
