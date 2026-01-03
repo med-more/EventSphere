@@ -29,3 +29,6 @@ export const updateStates = (statsData) => {
     console.log("Mise à jour stats (simulation):", statsData);
     return Promise.resolve({ data: { ...stats, ...statsData } });
 };
+
+
+export const getTestimonials = () => Promise.resolve({ data: testimonials });
