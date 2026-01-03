@@ -45,6 +45,22 @@ const StatsCounter = () => {
         happyCustomers: 0,
         eventsHosted: 0
     });
+
+    useEffect(() => {
+        const fetchStats = async () =>{
+            try {
+                const response = await getStats();
+                if (response.data) {
+                    setStats(response.data);
+                }
+            } catch (error) {
+                console.error('Error fetching stats:', error);
+            }
+        };
+        fetchStats();
+        const interval = setInterval(fetchStats, 10000);
+        return () => clearInterval(interval);
+    }, []);
 }
 
 export default StatsCounter
