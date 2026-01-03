@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getStats } from '../api/axios';
 
-const StatsCounter = ({ value }) => {
+const StatsCounter = ({ label ,value }) => {
     const [count, setCount] = useState(0);
 
     useEffect(() =>{
@@ -23,9 +23,20 @@ const StatsCounter = ({ value }) => {
 
         return () => clearInterval(timer);
     }, [value]);
+
+
   return (
-    <div>StatsCounter</div>
-  )
+        <div className="text-center p-6 bg-dark-grey rounded-2xl border border-dark-grey/50 hover:border-bright-orange/30 transition-all duration-300 group hover:transform hover:scale-105">
+            <div className={`text-4xl mb-4 text-bright-orange group-hover:scale-110 transition-transform duration-300`}>
+                {icon}
+            </div>
+            <div className="text-3xl md:text-4xl font-bold text-light-beige mb-2 font-mono">
+                {count.toLocaleString()}
+                <span className="text-bright-orange text-sm ml-1">+</span>
+            </div>
+            <p className="text-light-beige/70 text-sm uppercase tracking-wider font-medium">{label}</p>
+        </div>
+    );
 }
 
 export default StatsCounter
