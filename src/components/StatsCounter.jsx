@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getStats } from '../api/axios';
 
-const StatsCounter = ({ label ,value }) => {
+const StatItem = ({ label ,value, icon }) => {
     const [count, setCount] = useState(0);
 
     useEffect(() =>{
@@ -37,6 +37,14 @@ const StatsCounter = ({ label ,value }) => {
             <p className="text-light-beige/70 text-sm uppercase tracking-wider font-medium">{label}</p>
         </div>
     );
+};
+
+const StatsCounter = () => {
+    const [stats, setStats] = useState({
+        totalTicketsSold: 0,
+        happyCustomers: 0,
+        eventsHosted: 0
+    });
 }
 
 export default StatsCounter
