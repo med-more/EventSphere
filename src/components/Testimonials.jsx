@@ -8,6 +8,18 @@ import toast from 'react-hot-toast';
 const Testimonials = () => {
     const [ testimonials, setTestimonials ] = useState([]);
     const navigate = useNavigate();
+
+    useEffect(() =>{
+        const fetchTestimonials = async () =>{
+            try {
+                const response = await getTestimonials();
+                setTestimonials(response.data);
+            } catch (error) {
+                console.error('Error fetching testimonials:', error);
+            }
+        };
+        fetchTestimonials();
+    }, []);
   return (
     <div>Testimonials</div>
   )
