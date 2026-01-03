@@ -6,6 +6,8 @@ import toast from 'react-hot-toast';
 
 
 const Testimonials = () => {
+    const [ testimonials, setTestimonials ] = useState([]);
+    const navigate = useNavigate();
   return (
     <div>Testimonials</div>
   )
