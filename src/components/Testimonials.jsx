@@ -33,7 +33,52 @@ const Testimonials = () => {
         navigate('/contact');
     };
   return (
-    <div>Testimonials</div>
+    <section className="max-w-7xl mx-auto px-4 py-16 relative z-10">
+            <div className="flex justify-center items-center mb-12 relative">
+                <h2 className="text-4xl font-bold text-light-beige text-center">
+                    Ce que disent nos <span className="text-bright-orange">Clients</span>
+                </h2>
+                <button
+                    onClick={handleFeedbackClick}
+                    className="absolute right-0 md:right-10 w-12 h-12 rounded-full bg-bright-orange hover:bg-bright-orange/90 text-dark-black flex items-center justify-center text-2xl transition-all duration-300 hover:scale-110 hover:rotate-90 group"
+                    title="Donnez votre avis"
+                >
+                    <span className="group-hover:hidden">+</span>
+                    <svg className="hidden group-hover:block w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                    </svg>
+                </button>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {testimonials.map((testimonial, index) => (
+                    <div
+                        key={testimonial.id}
+                        className="p-6 bg-dark-grey rounded-2xl border border-dark-grey/50 hover:border-bright-orange/30 transition-all duration-300"
+                        style={{ animationDelay: `${index * 0.2}s` }}
+                    >
+                        <div className="flex items-center space-x-4 mb-4">
+                            <img
+                                src={testimonial.avatar}
+                                alt={testimonial.name}
+                                className="w-12 h-12 rounded-full object-cover border-2 border-bright-orange"
+                            />
+                            <div>
+                                <h3 className="text-light-beige font-bold">{testimonial.name}</h3>
+                                <p className="text-bright-orange/80 text-xs">{testimonial.role}</p>
+                            </div>
+                        </div>
+                        <div className="flex mb-4">
+                            {[...Array(testimonial.rating)].map((_, i) => (
+                                <svg key={i} className="w-5 h-5 text-bright-orange fill-current" viewBox="0 0 24 24">
+                                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                                </svg>
+                            ))}
+                        </div>
+                        <p className="text-light-beige/80 text-sm italic">"{testimonial.content}"</p>
+                    </div>
+                ))}
+            </div>
+        </section>
   )
 }
 
