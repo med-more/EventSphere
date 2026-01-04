@@ -4,6 +4,10 @@ import toast from 'react-hot-toast';
 
 
 const Login = () => {
+  const [ credentials, setCredentials ] = useState({
+    username: '',
+    password: '',
+  });
   return (
     <div>Login</div>
   )
