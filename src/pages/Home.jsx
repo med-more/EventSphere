@@ -27,6 +27,9 @@ const categoryIcons = {
     ),
 };
 const Home = () => {
+  const [featuredEvents, setFeaturedEvents] = useState([]);
+  const [categories, setCategories] = useState([]);
+
   return (
     <div>Home</div>
   )
