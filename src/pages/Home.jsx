@@ -30,6 +30,22 @@ const Home = () => {
   const [featuredEvents, setFeaturedEvents] = useState([]);
   const [categories, setCategories] = useState([]);
 
+  useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const [eventsRes, categoriesRes] = await Promise.all([
+                    getEvents(),
+                    getCategories()
+                ]);
+                setFeaturedEvents(eventsRes.data.slice(0, 3));
+                setCategories(categoriesRes.data);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+        fetchData();
+    }, []);
+
   return (
     <div>Home</div>
   )
